@@ -1,0 +1,40 @@
+
+<form (ngSubmit)="adaugaIntrare()" #form="ngForm">
+  
+    <input type="text" name="nume" [(ngModel)]="intrare.nume" required>
+    <input type="text" name="tara" [(ngModel)]="intrare.tara" required>
+    <input type="text" name="dataVizitei" [(ngModel)]="intrare.dataVizitei" required>
+    <input type="text" name="continent" [(ngModel)]="intrare.continent" required>
+    <input type="text" name="locuitori" [(ngModel)]="intrare.locuitori" required>
+  
+   
+    <button type="submit" [disabled]="!form.valid">Adaugă intrare</button>
+  </form>
+  
+ 
+  <input type="text" [(ngModel)]="termenCautare" (input)="cautaIntrari()" placeholder="Caută...">
+  
+ 
+  <table>
+    <thead>
+      <tr>
+        <th (click)="sorteaza('nume')">Nume</th>
+        <th (click)="sorteaza('tara')">Tara</th>
+        <th (click)="sorteaza('datavizitei')">DataVizitei</th>
+        <th (click)="sorteaza('continent')">Continent</th>
+        <th (click)="sorteaza('locuitori')">Locuitori</th>
+        <th>Acțiuni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let intrare of intrari | filter: termenCautare | sort: sortareColoana">
+        <td>{{ intrare.nume }}</td>
+        <td>{{ intrare.tara }}</td>
+        <td>{{ intrare.dataVizitei }}</td>
+        <td>{{ intrare.continent }}</td>
+        <td>{{ intrare.locuitori }}</td>
+        <td><button (click)="stergeIntrare(intrare)">Șterge</button></td>
+      </tr>
+    </tbody>
+  </table>
+  

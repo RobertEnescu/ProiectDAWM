@@ -9,11 +9,15 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TabelListaComponent } from './tabel-lista/tabel-lista.component';
+import { FilterPipe } from './FilterPipe/filter.pipe';
+import { SortPipe } from './SortPipe/sort.pipe';
+
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TabelListaComponent, FilterPipe, SortPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
