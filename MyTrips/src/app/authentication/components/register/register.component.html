@@ -57,18 +57,19 @@
       [nzXs]="24"
       nzFor="username"
       nzRequired
-      nzTooltipTitle="What do you want other to call you"
+      nzTooltipTitle="What do you want others to call you"
     >
       <span>Username</span>
     </nz-form-label>
     <nz-form-control
       [nzSm]="14"
       [nzXs]="24"
-      nzErrorTip="Please input your username!"
+      [nzErrorTip]="getUsernameErrorMessage()"
     >
       <input nz-input id="username" formControlName="username" />
     </nz-form-control>
   </nz-form-item>
+
   <nz-form-item nz-row class="register-area">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <label nz-checkbox formControlName="agree">

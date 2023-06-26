@@ -6,24 +6,31 @@
     (ngSubmit)="submitForm()"
   >
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your username!">
+      <nz-form-control
+        nzErrorTip="Please input your username!"
+        class="custom-form-control"
+      >
         <span nz-prefix>
           <i nz-icon nzType="user" class="prefix-icon"></i>
         </span>
         <input
           type="text"
           nz-input
-          formControlName="userName"
+          formControlName="username"
           placeholder="Username"
         />
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control nzErrorTip="Please input your Password!">
+      <nz-form-control
+        nzErrorTip="Please input your Password!"
+        class="custom-form-control"
+      >
         <span nz-prefix>
           <i nz-icon nzType="lock" class="prefix-icon"></i>
         </span>
         <input
+          class="input"
           type="password"
           nz-input
           formControlName="password"
@@ -51,4 +58,7 @@
     Or
     <a routerLink="/register">register now!</a>
   </form>
+  <div class="error-message" *ngIf="invalidLogin">
+    Invalid username or password. Please try again.
+  </div>
 </div>

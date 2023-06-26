@@ -1,4 +1,11 @@
-import { AbstractControl } from '@angular/forms';
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
+import { map } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 export function passwordValidator(
   control: AbstractControl

@@ -1,43 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { User } from '../interfaces/user.interface';
-import usersData from './users.json';
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private usersList: User[] = usersData;
+  private apiUrl = 'http://localhost:3000/users';
   usersListSubject = new Subject<User[]>();
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  get users(): User[] {
-    return this.usersList;
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
   }
 
-  set users(usersToSet: any) {
-    this.usersList = usersToSet;
-    this.usersListSubject.next(usersToSet);
+  addNewUser(user: User): Observable<User> {
+    return this.http.post<User>(this.apiUrl, user);
+  }
+  login(username: string, password: string): Observable<boolean> {
+    const url = `${this.apiUrl}?username=${username}&password=${password}`;
+    return this.http.get<User[]>(url).pipe(
+      map((users) => {
+        return users.length > 0;
+      })
+    );
   }
 
-  deleteUser(user: User) {
-    const index = this.usersList.findIndex(() => user);
-    this.usersList.splice(index, 1);
-
-    this.usersListSubject.next(this.usersList);
-  }
-
-  addNewUser() {
-    this.usersList.push(this.emptyUser());
-    this.usersListSubject.next(this.usersList);
-  }
-
-  emptyUser(): User {
-    return {
-      username: '-',
-      email: '-',
-      password: '-',
-    };
+  checkUsernameAvailability(username: string): Observable<boolean> {
+    const url = `${this.apiUrl}?username=${username}`;
+    return this.http.get<User[]>(url).pipe(
+      map((users) => {
+        return users.length > 0;
+      })
+    );
   }
 }
