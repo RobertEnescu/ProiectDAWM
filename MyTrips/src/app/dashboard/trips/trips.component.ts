@@ -35,7 +35,9 @@ export class TripsComponent implements OnInit {
   goToAddTrips() {
     this.router.navigate(['/dashboard/add_trip']);
   }
-
+goToTableList(){
+  this.router.navigate(['/dashboard/tabel-lista']);
+}
   
   deleteTrip(trip: any) {
     const confirmDelete = confirm('Are you sure you want to delete this trip?');
