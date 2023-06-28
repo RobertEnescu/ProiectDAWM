@@ -1,0 +1,21 @@
+<button class="buton" (click)="goToAddTrips()">Add Trips</button>
+<div class="trips-container" *ngIf="user">
+  <div class="trip-card" *ngFor="let trip of user.trips">
+    <div class="card-body">
+      <img src="{{ trip.imageURL }}" alt="Trip Image" />
+    </div>
+    <div class="card-content">
+      <h3>{{ trip.city }}</h3>
+      <p>{{ trip.date }}</p>
+      <p>{{ trip.description }}</p>
+      <div class="card-actions">
+        <span class="edit-icon" nz-tooltip="Edit">
+          <i nz-icon nzType="edit" nzTheme="fill"></i>
+        </span>
+        <span class="delete-icon" nz-tooltip="Delete">
+          <i nz-icon nzType="delete" nzTheme="fill"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

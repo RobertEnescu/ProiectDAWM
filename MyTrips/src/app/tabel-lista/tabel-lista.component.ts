@@ -28,6 +28,7 @@ export class TabelListaComponent {
   ];
   termenCautare: string = '';
   sortareColoana: string = '';
+  
 
   constructor(private filterPipe: FilterPipe, private sortPipe: SortPipe) {}
 

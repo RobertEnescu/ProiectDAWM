@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { passwordValidator } from 'src/app/helpers/validators';
 import { User } from 'src/app/interfaces/user.interface';
 import { UserService } from 'src/app/services/user.service';
@@ -18,7 +19,11 @@ export class RegisterComponent implements OnInit {
   validateForm!: FormGroup;
   usernameTaken = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -50,10 +55,12 @@ export class RegisterComponent implements OnInit {
               username: username,
               email: this.validateForm.value.email,
               password: this.validateForm.value.password,
+              trips: [],
             };
             this.userService.addNewUser(user).subscribe(
               () => {
                 console.log('User added successfully');
+                this.router.navigate(['authentication/login']);
               },
               (error) => {
                 console.error('Error adding user:', error);

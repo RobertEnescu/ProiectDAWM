@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../helpers/auth.guard';
 import { TabelListaComponent } from '../tabel-lista/tabel-lista.component';
+import { AddTripComponent } from './add-trip/add-trip.component';
+import { TripsComponent } from './trips/trips.component';
 
 const routes: Routes = [
-  {
-    path: 'tabel',
-    component: TabelListaComponent,
-    canActivate: [AuthGuard], // Apply the AuthGuard to protect the route
-  },
-  { path: '**', redirectTo: 'tabel' },
+  { path: '', redirectTo: 'trips', pathMatch: 'full' },
+  { path: 'trips', component: TripsComponent },
+  { path: 'add_trip', component: AddTripComponent },
 ];
 
 @NgModule({

@@ -39,9 +39,9 @@ export class LoginComponent implements OnInit {
 
             // Store the logged-in user information
             localStorage.setItem('loggedInUser', username);
-
+            console.log('success');
             // Redirect to the main page or any desired route
-            this.router.navigate(['/tabel']);
+            this.router.navigate(['dashboard/trips']);
           } else {
             // Invalid username or password
             this.invalidLogin = true;

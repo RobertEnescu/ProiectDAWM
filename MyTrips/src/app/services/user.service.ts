@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, Subject } from 'rxjs';
 import { User } from '../interfaces/user.interface';
+import { Trip } from '../interfaces/trip.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -35,5 +36,18 @@ export class UserService {
         return users.length > 0;
       })
     );
+  }
+  getUserByUsername(username: string): Observable<User[]> {
+    const url = `${this.apiUrl}?username=${username}`;
+    return this.http.get<User[]>(url);
+  }
+  updateUser(user: User): Observable<User> {
+    const url = `${this.apiUrl}/${user.id}`;
+    return this.http.put<User>(url, user);
+  }
+
+  addTripToUser(user: User, trip: Trip): Observable<User> {
+    user.trips.push(trip);
+    return this.updateUser(user);
   }
 }

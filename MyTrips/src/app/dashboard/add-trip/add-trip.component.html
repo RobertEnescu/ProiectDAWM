@@ -1,0 +1,44 @@
+<nz-form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+  <nz-form-item>
+    <nz-form-label [nzFor]="'city'">City</nz-form-label>
+    <nz-form-control>
+      <input nz-input type="text" id="city" formControlName="city" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzFor]="'description'">Description</nz-form-label>
+    <nz-form-control>
+      <input
+        nz-input
+        type="text"
+        id="description"
+        formControlName="description"
+      />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzFor]="'imageURL'">Image URL</nz-form-label>
+    <nz-form-control>
+      <input nz-input type="text" id="imageURL" formControlName="imageURL" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzFor]="'date'">Date</nz-form-label>
+    <nz-form-control>
+      <nz-date-picker
+        nzFormat="yyyy-MM-dd"
+        formControlName="date"
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <button
+      nz-button
+      nzType="primary"
+      type="submit"
+      [disabled]="tripForm.invalid"
+    >
+      Add Trip
+    </button>
+  </nz-form-item>
+</nz-form>
