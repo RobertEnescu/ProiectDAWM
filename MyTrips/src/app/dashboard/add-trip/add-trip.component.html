@@ -1,44 +1,21 @@
-<nz-form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
-  <nz-form-item>
-    <nz-form-label [nzFor]="'city'">City</nz-form-label>
-    <nz-form-control>
-      <input nz-input type="text" id="city" formControlName="city" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzFor]="'description'">Description</nz-form-label>
-    <nz-form-control>
-      <input
-        nz-input
-        type="text"
-        id="description"
-        formControlName="description"
-      />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzFor]="'imageURL'">Image URL</nz-form-label>
-    <nz-form-control>
-      <input nz-input type="text" id="imageURL" formControlName="imageURL" />
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzFor]="'date'">Date</nz-form-label>
-    <nz-form-control>
-      <nz-date-picker
-        nzFormat="yyyy-MM-dd"
-        formControlName="date"
-      ></nz-date-picker>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <button
-      nz-button
-      nzType="primary"
-      type="submit"
-      [disabled]="tripForm.invalid"
-    >
-      Add Trip
-    </button>
-  </nz-form-item>
-</nz-form>
+<ng-container *ngIf="user">
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="city">City:</label>
+      <input type="text" id="city" formControlName="city" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" formControlName="description" required>
+    </div>
+    <div>
+      <label for="imageURL">Image URL:</label>
+      <input type="text" id="imageURL" formControlName="imageURL" required>
+    </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" formControlName="date" required>
+    </div>
+    <button type="submit" [disabled]="tripForm.invalid">Add Trip</button>
+  </form>
+</ng-container>

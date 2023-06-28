@@ -25,15 +25,15 @@ export class AddTripComponent implements OnInit {
       date: [null, Validators.required],
       imageURL: ['', Validators.required],
     });
+  
     const loggedInUser = localStorage.getItem('loggedInUser');
-
+  
     if (loggedInUser) {
-      // Fetch the user data from the server based on the logged-in username
       this.userService.getUserByUsername(loggedInUser).subscribe(
         (users) => {
           if (users.length > 0) {
-            // Assuming there is only one user with the provided username
             this.user = users[0];
+            console.log('Retrieved user:', this.user); // Add this line to log the user object
           }
         },
         (error) => {
@@ -42,7 +42,6 @@ export class AddTripComponent implements OnInit {
       );
     }
   }
-
   onSubmit() {
     const trip: Trip = {
       city: this.tripForm.get('city').value,
@@ -50,12 +49,12 @@ export class AddTripComponent implements OnInit {
       imageURL: this.tripForm.get('imageURL').value,
       date: this.tripForm.get('date').value,
     };
-
+  
     if (this.user) {
       this.userService.addTripToUser(this.user, trip).subscribe(
-        (user) => {
+        (updatedUser) => {
           // Trip added successfully, update the user data
-          this.user = user;
+          this.user = updatedUser;
           this.tripForm.reset();
         },
         (error) => {

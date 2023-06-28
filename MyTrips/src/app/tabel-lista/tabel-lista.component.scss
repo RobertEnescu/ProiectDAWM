@@ -1,0 +1,56 @@
+form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  
+    input {
+      margin-bottom: 10px;
+    }
+  
+    button {
+      width: 150px;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+  
+      &:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+      }
+    }
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    th {
+      cursor: pointer;
+    }
+  
+    tr:last-child td {
+      border-bottom: none;
+    }
+  }
+  
+  button {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  

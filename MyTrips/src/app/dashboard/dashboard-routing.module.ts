@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'trips', pathMatch: 'full' },
   { path: 'trips', component: TripsComponent },
   { path: 'add_trip', component: AddTripComponent },
+  {path: 'tabel-lista', component:TabelListaComponent}
 ];
 
 @NgModule({

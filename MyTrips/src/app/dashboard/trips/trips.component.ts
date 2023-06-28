@@ -35,4 +35,27 @@ export class TripsComponent implements OnInit {
   goToAddTrips() {
     this.router.navigate(['/dashboard/add_trip']);
   }
+
+  
+  deleteTrip(trip: any) {
+    const confirmDelete = confirm('Are you sure you want to delete this trip?');
+    if (confirmDelete) {
+      
+      const index = this.user.trips.indexOf(trip);
+      this.user.trips.splice(index, 1);
+
+      
+      this.userService.updateUser(this.user)
+        .subscribe(
+          response => {
+            console.log('Trip deleted successfully:', response);
+          },
+          error => {
+            console.error('Error deleting trip:', error);
+            
+            this.user.trips.splice(index, 0, trip);
+          }
+        );
+    }
+  }
 }
