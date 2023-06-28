@@ -53,7 +53,16 @@ export class UserService {
     const url = `${this.apiUrl}/${user.id}`;
     return this.http.put<User>(url, user);
   }
-
+  updateTrip(user: User, trip: Trip): Observable<User> {
+    const updatedUser: User = {
+      ...user,
+      trips: user.trips.map((t) => (t.id === trip.id ? trip : t))
+    };
+  
+    return this.updateUser(updatedUser);
+  }
+  
+  
   addTripToUser(user: User, trip: Trip): Observable<User> {
     user.trips.push(trip);
     return this.updateUser(user);

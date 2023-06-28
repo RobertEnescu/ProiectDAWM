@@ -1,0 +1,21 @@
+<ng-container *ngIf="user">
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="city">City:</label>
+      <input type="text" id="city" formControlName="city" required>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" formControlName="description" required>
+    </div>
+    <div>
+      <label for="imageURL">Image URL:</label>
+      <input type="text" id="imageURL" formControlName="imageURL" required>
+    </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" formControlName="date" required>
+    </div>
+    <button type="submit" [disabled]="tripForm.invalid">Edit Trip</button>
+  </form>
+</ng-container>

@@ -10,9 +10,10 @@ import { AddTripComponent } from './add-trip/add-trip.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { EditComponent } from './edit/edit.component';
 @NgModule({
   providers: [AuthGuard],
-  declarations: [TripsComponent, AddTripComponent],
+  declarations: [TripsComponent, AddTripComponent, EditComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

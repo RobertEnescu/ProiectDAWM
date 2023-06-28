@@ -10,7 +10,7 @@
       <p>{{ trip.date }}</p>
       <p>{{ trip.description }}</p>
       <div class="card-actions">
-        <span class="edit-icon" nz-tooltip="Edit">
+        <span class="edit-icon" nz-tooltip="Edit" (click)="goToEditTrips()">
           <i nz-icon nzType="edit" nzTheme="fill"></i>
         </span>
         <span class="delete-icon" nz-tooltip="Delete" (click)="deleteTrip(trip)">

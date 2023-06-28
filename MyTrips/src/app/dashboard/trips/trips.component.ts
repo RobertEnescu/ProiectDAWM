@@ -35,7 +35,10 @@ export class TripsComponent implements OnInit {
   goToAddTrips() {
     this.router.navigate(['/dashboard/add_trip']);
   }
-goToTableList(){
+  goToEditTrips(){
+    this.router.navigate(['/dashboard/edit_trip']);
+  }
+  goToTableList(){
   this.router.navigate(['/dashboard/tabel-lista']);
 }
   
