@@ -54,16 +54,16 @@ export class UserService {
     return this.http.put<User>(url, user);
   }
 
-  //addTripToUser(user: User, trip: Trip): Observable<User> {
-    //user.trips.push(trip);
-    //return this.updateUser(user);
-  //}
   addTripToUser(user: User, trip: Trip): Observable<User> {
-    const updatedUser: User = {
-      ...user,
-      trips: [...user.trips, trip],
-    };
-    console.log('Updated User:', updatedUser);
-    return of(updatedUser);
+    user.trips.push(trip);
+    return this.updateUser(user);
   }
+  //addTripToUser(user: User, trip: Trip): Observable<User> {
+   // const updatedUser: User = {
+     // ...user,
+      //trips: [...user.trips, trip],
+   // };
+    //console.log('Updated User:', updatedUser);
+    //return of(updatedUser);
+  //}
 }

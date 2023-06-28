@@ -54,7 +54,7 @@ export class AddTripComponent implements OnInit {
       this.userService.addTripToUser(this.user, trip).subscribe(
         (updatedUser) => {
           // Trip added successfully, update the user data
-          this.user = updatedUser;
+          this.userService.updateUser(updatedUser);
           this.tripForm.reset();
         },
         (error) => {

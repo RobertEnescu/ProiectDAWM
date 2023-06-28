@@ -60,6 +60,13 @@
           "date": "2023-07-10",
           "description": "Exploring the beautiful city of Paris",
           "imageURL": "https://cdn.britannica.com/03/198203-050-138BB1C3/entrance-Gate-of-Divine-Might-Beijing-Forbidden.jpg"
+        },
+        {
+          "id": 8,
+          "city": "Tokyo",
+          "date": "2022-07-10",
+          "description": "Visiting Tokyo's famous landmarks",
+          "imageURL": "https://imagenes.elpais.com/resizer/2tMKJy4AlWTBx5Kw67ENP-J4la8=/1960x1470/cloudfront-eu-central-1.images.arcpublishing.com/prisa/MPEDLDCHGBQ5QHIS7AHNLKSTQI.jpg"
         }
       ],
       "id": 2
