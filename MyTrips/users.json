@@ -15,9 +15,9 @@
         {
           "id": 1,
           "city": "Paris",
-          "date": "2021-10-10",
           "description": "Exploring the beautiful city of Madrid",
-          "imageURL": "https://t4.ftcdn.net/jpg/02/96/15/35/360_F_296153501_B34baBHDkFXbl5RmzxpiOumF4LHGCvAE.jpg"
+          "imageURL": "https://t4.ftcdn.net/jpg/02/96/15/35/360_F_296153501_B34baBHDkFXbl5RmzxpiOumF4LHGCvAE.jpg",
+          "date": "2021-10-12"
         },
         {
           "id": 2,

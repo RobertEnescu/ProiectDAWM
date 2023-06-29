@@ -18,4 +18,14 @@
     </div>
     <button type="submit" [disabled]="tripForm.invalid">Edit Trip</button>
   </form>
+  
+  <ul>
+    <li *ngFor="let trip of user.trips">
+      <div>{{ trip.city }}</div>
+      <div>{{ trip.description }}</div>
+      <div>{{ trip.date }}</div>
+      <div>{{ trip.imageURL }}</div>
+      <button (click)="setTripToUpdate(trip)">Edit</button>
+    </li>
+  </ul>
 </ng-container>

@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class EditComponent implements OnInit {
   tripForm: FormGroup;
   user: User | null = null;
-  tripToUpdate: Trip | null = null; // New variable to store the trip to update
+  tripToUpdate: Trip | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -34,7 +34,7 @@ export class EditComponent implements OnInit {
         (users) => {
           if (users.length > 0) {
             this.user = users[0];
-            console.log('Retrieved user:', this.user); // Add this line to log the user object
+            console.log('Retrieved user:', this.user);
           }
         },
         (error) => {
@@ -44,7 +44,6 @@ export class EditComponent implements OnInit {
     }
   }
 
-  // New method to set the trip to update
   setTripToUpdate(trip: Trip) {
     this.tripToUpdate = trip;
     this.tripForm.patchValue({
@@ -56,25 +55,29 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit() {
-    const updatedTrip: Trip = {
+    const newTrip: Trip = {
+      id: this.tripToUpdate ? this.tripToUpdate.id : null, // Assign a new ID if adding a new trip
       city: this.tripForm.get('city').value,
       description: this.tripForm.get('description').value,
       imageURL: this.tripForm.get('imageURL').value,
       date: this.tripForm.get('date').value,
     };
   
-    if (this.user && this.tripToUpdate) {
-      this.userService.updateTrip(this.user, updatedTrip).subscribe(
-        (updatedUser) => {
-          // Trip updated successfully, update the user data
-          this.userService.updateUser(updatedUser);
-          this.tripForm.reset();
-          this.tripToUpdate = null;
-        },
-        (error) => {
-          console.error('Error updating trip:', error);
-        }
-      );
+    if (this.user) {
+      if (this.tripToUpdate) {
+        // Updating an existing trip
+        this.userService.updateTrip(this.user, newTrip).subscribe(
+          (updatedUser) => {
+            this.user = updatedUser; // Update the user object with the updated data
+            this.tripForm.reset();
+            this.tripToUpdate = null;
+          },
+          (error) => {
+            console.error('Error updating trip:', error);
+          }
+        );
+      } 
+      }
     }
   }
-}
+

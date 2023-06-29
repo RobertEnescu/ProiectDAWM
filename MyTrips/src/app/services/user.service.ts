@@ -58,7 +58,7 @@ export class UserService {
       ...user,
       trips: user.trips.map((t) => (t.id === trip.id ? trip : t))
     };
-  
+
     return this.updateUser(updatedUser);
   }
   
